@@ -3,10 +3,8 @@ fetch("http://127.0.0.1:8000/events/all_events/")
 .then(res=>res.json())
 .then(data=>{
     console.log(data);
-    
     data.forEach(element => {
         const inputDate = element.event_data;
-
         const dateParts = inputDate.split("-");
         const year = parseInt(dateParts[2], 10);
         const month = parseInt(dateParts[1], 10) - 1;
@@ -26,7 +24,7 @@ fetch("http://127.0.0.1:8000/events/all_events/")
                             <h1>${dayNumber}</h1>
                             <div class="text"><span>${monthName}</span> <br>${element.event_start_time}</div>
                         </div>
-                        <h4><a href="event-details.html">${element.title}</a></h4>
+                        <h4><a href="event-details.html?id=${element.id}">${element.title}</a></h4>
                     <div class="location"><span class="flaticon-point"></span>${element.location}</div>
                 </div>
                 <div class="link-btn"><a href="#"><span class="flaticon-next"></span>Join With Us</a></div>
@@ -42,13 +40,46 @@ function singleEvents() {
         .then((res) => res.json())
         .then((data) => {
 
-            console.log(formattedDate);
-            document.getElementById("post-title").innerText = data.post_title;
-            document.getElementById("post-title-mid").innerText = data.post_title;
-            document.getElementById("post-date").innerText = formattedDate;
-            document.getElementById("post-category").innerText = data.category_name;
-            document.getElementById("post-image").src = data.post_image;
-            document.getElementById("post-details").innerText = data.post_description;
+            console.log(data.title);
+
+            document.getElementById("event-title").innerText = data.title;
+            document.getElementById("where").innerText = data.location;
+            document.getElementById("when").innerText = data.event_data;
+            document.getElementById("event_start_time").innerText = data.event_start_time;
+            document.getElementById("event_end_time").innerText = data.event_end_time;
+            document.getElementById("description").innerText = data.event_description;
+            document.getElementById("event-image").src = data.event_image;
+            document.getElementById("price").innerText = data.ticket_price;
 
         });
 }
+
+singleEvents();
+
+const bookEventTicket=(event)=>{    
+    event.preventDefault();
+    const param = new URLSearchParams(window.location.search).get("id");
+    console.log(param);
+    const name = document.getElementById("booking-form-name").value;
+    const email = document.getElementById("booking-form-email").value;
+    const phone = document.getElementById("booking-form-phone").value;
+
+    // const customer = localStorage.getItem("user_id");
+    // console.log(customer);
+    const info = {
+      name: name,
+      email : email,
+      phone : phone,
+      event : param,
+    };
+    console.log(info);
+    fetch("http://127.0.0.1:8000/events/booking/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(info),
+    })
+      .then((res) => res.json())
+      .then((data) => {        
+        console.log(data);
+      });
+};

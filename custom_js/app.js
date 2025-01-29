@@ -14,9 +14,9 @@ fetch("http://127.0.0.1:8000/campain/all_capain/")
         div.innerHTML=`
                         
                         <div class="inner-box">
-                            <div class="image"><a href="cause-details.html"><img src="${element.image}" alt=""></a></div>
+                            <div class="image"><a href="cause-details.html?slug=${element.campain_slug}"><img src="${element.image}" alt=""></a></div>
                             <div class="lower-content">
-                                <h4><a href="cause-details.html">${element.campain_title}</a></h4>
+                                <h4><a href="cause-details.html?slug=${element.campain_slug}">${element.campain_title}</a></h4>
                                 <div class="category"><a href="#">${element.category_name}</a></div>
                                 <div class="text short-details">${element.short_details}</div>
                                 <div class="info-box">
@@ -79,10 +79,10 @@ fetch("http://127.0.0.1:8000/events/all_events/")
                                                 <h1>${dayNumber}</h1>
                                                 <div class="text"><span>${monthName}</span> <br>${element.event_start_time}</div>
                                             </div>
-                                            <h4><a href="event-details.html">${element.title}</a></h4>
+                                            <h4><a href="event-details.html?id=${element.id}">${element.title}</a></h4>
                                             <div class="location"><span class="flaticon-point"></span>${element.location}</div>
                                         </div>
-                                        <div class="link-btn"><a href="#"><span class="flaticon-next"></span>Join With Us</a></div>
+                                        <div class="link-btn"><a href="event-details.html?id=${element.id}"><span class="flaticon-next"></span>Join With Us</a></div>
                                     </div>        
                     
         `
@@ -108,12 +108,11 @@ fetch("http://127.0.0.1:8000/blog/all_blog/")
         const parents = document.getElementById('blog-grid');
         const div = document.createElement("div")
         div.classList.add('col-lg-3' ,'col-md-6', 'news-block-one');
-        div.innerHTML=`
-                        
+        div.innerHTML=`                        
                         <div class="inner-box wow fadeInUp" data-wow-delay="200ms">
                         <div class="category"><a href="#">${element.category_name}</a></div>
                         <div class="image">
-                            <a href="blog-details.html"><img src="${element.post_image}" alt=""></a>
+                            <a href="blog-details.html?id=${element.id}"><img src="${element.post_image}" alt=""></a>
                             <div class="post-meta-info">
                                 <a href="#"><span class="flaticon-eye"></span>21</a>
                                 <a href="#"><span class="flaticon-comment"></span>08</a>
@@ -121,12 +120,10 @@ fetch("http://127.0.0.1:8000/blog/all_blog/")
                         </div>
                         <div class="lower-content">
                             <div class="date">${formattedDate}</div>
-                            <h4><a href="blog-details.html">${element.post_title}</a></h4>
+                            <h4><a href="blog-details.html?id=${element.id}">${element.post_title}</a></h4>
                             <div class="text short-details">${element.post_description}</div>
                             <br>
-                            <div class="link-btn"><a href="#"><span class="flaticon-next"></span>Read More</a></div>
-
-                            
+                            <div class="link-btn"><a href="blog-details.html?id=${element.id}"><span class="flaticon-next"></span>Read More</a></div>
                         </div>
                     </div>
                     

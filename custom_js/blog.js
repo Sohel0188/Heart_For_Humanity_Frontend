@@ -108,5 +108,33 @@ fetch("http://127.0.0.1:8000/events/all_events/")
 })
 
 
+const param = new URLSearchParams(window.location.search).get("id");
+fetch(`http://127.0.0.1:8000/blog/blog_comments/${param}/`)
+.then(res => res.json())
+.then(data => {
+
+    data.forEach(element => {
+        const parents = document.getElementById('post-comment');
+        const div = document.createElement("div")
+        div.classList.add('comment-box');
+        div.innerHTML = `
+          <div class="comment">
+                <div class="author-thumb"><img src="images/resource/author-thumb-6.jpg" alt=""></div>
+                <div class="comment-inner">
+                <div class="comment-info">Steven Rich<span class="date">February
+                            26, 2019</span></div>
+                    <div class="text">On the other hand, we denounce with righteous
+                        indignation and dislike men who are so beguiled and
+                        demoralized saying through shrinking.</div>
+                        <a class="reply-comment" href="#"><span class="flaticon-next"></span> Reply</a>
+                </div>
+            </div>  
+                                                        
+                                                        
+    `
+        parents.appendChild(div);
+    });
+})
+
 singleBlog()
 

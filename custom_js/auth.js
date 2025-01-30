@@ -33,7 +33,7 @@ const handleRegistration = (event) => {
 
     if (password === confirm_password) {
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
-            document.getElementById("registration_button").value = "Loding....";
+            document.getElementById("registration_button").innerHTML = "Loding....";
             fetch("http://127.0.0.1:8000/account/register/", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
@@ -43,7 +43,7 @@ const handleRegistration = (event) => {
                 .then((res) => res.json())
                 .then((data) => {
                     document.getElementById('error').innerText = data;
-                    document.getElementById("registration_button").value = 'Register';
+                    document.getElementById("registration_button").innerHTML = 'Register';
                     clearForm();
                 });
         } else {
@@ -68,7 +68,6 @@ const handleLogin = (event) => {
         password,
     };
     console.log(value);
-
     fetch("http://127.0.0.1:8000/account/login/", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },

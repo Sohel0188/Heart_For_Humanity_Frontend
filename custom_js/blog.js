@@ -107,34 +107,61 @@ fetch("http://127.0.0.1:8000/events/all_events/")
     });
 })
 
+function PostComment() {
+    const param = new URLSearchParams(window.location.search).get("id");
+    fetch(`http://127.0.0.1:8000/blog/blog_comments/?post=${param}`)
+        .then((res) => res.json())
+        .then(data => {
+            console.log(data);
+            data.forEach(element => {
+                console.log(element.comment)
+                const parents = document.getElementById('post-comment');
+                const div = document.createElement("div")
+                div.classList.add('comment-box');
+                div.innerHTML = `
+                        <div class="comment">
+                            <div class="author-thumb"><img
+                                    src="${element.commenter_image}" alt=""></div>
+                            <div class="comment-inner">
+                                <div class="comment-info">${element.commenter_name}</div>
+                                <div class="text">${element.comment}</div>
+                                
+                            </div>
+                        </div>    
+                `
+                parents.appendChild(div);
+            });
+        })
+        
+}
 
-const param = new URLSearchParams(window.location.search).get("id");
-fetch(`http://127.0.0.1:8000/blog/blog_comments/${param}/`)
-.then(res => res.json())
-.then(data => {
+const takeComment=(event)=>{  
+    event.preventDefault();
+    const param = new URLSearchParams(window.location.search).get("id");
+    const comments = document.getElementById("your-comment").value;
+    const user = localStorage.getItem("user_id");
+    const info = {
+        
+        post:param,
+        commenter:user,
+        comment:comments,
+    };
+    console.log(info);
+    
+    fetch(`http://127.0.0.1:8000/blog/blog_comments/`,{
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(info),
+    })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     window.location.reload();
+    //     console.log(data);
+    //   });
+  };
 
-    data.forEach(element => {
-        const parents = document.getElementById('post-comment');
-        const div = document.createElement("div")
-        div.classList.add('comment-box');
-        div.innerHTML = `
-          <div class="comment">
-                <div class="author-thumb"><img src="images/resource/author-thumb-6.jpg" alt=""></div>
-                <div class="comment-inner">
-                <div class="comment-info">Steven Rich<span class="date">February
-                            26, 2019</span></div>
-                    <div class="text">On the other hand, we denounce with righteous
-                        indignation and dislike men who are so beguiled and
-                        demoralized saying through shrinking.</div>
-                        <a class="reply-comment" href="#"><span class="flaticon-next"></span> Reply</a>
-                </div>
-            </div>  
-                                                        
-                                                        
-    `
-        parents.appendChild(div);
-    });
-})
 
-singleBlog()
+
+PostComment();
+singleBlog();
 

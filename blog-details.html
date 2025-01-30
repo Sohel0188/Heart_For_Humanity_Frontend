@@ -102,38 +102,25 @@
                                             </div>
                                             <!--Comment Box-->
                                             <div id="post-comment">
-                                                <div class="comment-box">
-                                                  
-                                                </div>
+                                                
                                             </div>
 
                                         </div>
                                         <!-- Comment form -->
                                         <div class="comment-form">
                                             <div class="group-title">
-                                                <h2>Leave a Reply</h2>
+                                                <h2>Leave a Comment</h2>
                                             </div>
                                             <form method="post"
-                                                action="http://steelthemes.com/demo/html/Goodsoul_html/contact.html">
+                                                action="#">
                                                 <div class="row clearfix">
 
                                                     <div class="col-md-12 form-group">
-                                                        <textarea name="message" placeholder="Comment..."></textarea>
+                                                        <textarea name="message" id="your-comment" placeholder="Comment..."></textarea>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" name="username" placeholder="Name*"
-                                                            required="">
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="email" name="email" placeholder="Email*"
-                                                            required="">
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" name="website" placeholder="Website"
-                                                            required="">
-                                                    </div>
+                                                   
                                                     <div class="col-md-12 form-group">
-                                                        <button class="theme-btn btn-style-one" type="submit"
+                                                        <button class="theme-btn btn-style-one" onclick="takeComment(event)" type="submit"
                                                             name="submit-form"><span>Post Comment</span></button>
                                                     </div>
                                                 </div>

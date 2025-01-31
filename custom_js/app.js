@@ -1,13 +1,13 @@
 fetch("http://127.0.0.1:8000/campain/all_capain/")
 .then(res=>res.json())
 .then(data=>{
-    console.log(data);
+    // console.log(data);
     
     data.forEach(element => {
         let raised_money_in_parcent = (element.raised_price*100)/element.goal_price;
         let infloor = Math.floor(raised_money_in_parcent)
-        console.log(raised_money_in_parcent);
-        console.log(infloor);
+        // console.log(raised_money_in_parcent);
+        // console.log(infloor);
         const parents = document.getElementById('cause-carousel');
         const div = document.createElement("div")
         div.classList.add('cause-block-one');
@@ -36,7 +36,7 @@ fetch("http://127.0.0.1:8000/campain/all_capain/")
                                     </div>
                                 </div>
                                 <div class="bottom-content">
-                                    <div class="link-btn"><a href="cause-details.html" class="theme-btn btn-style-one donate-box-btn"><span>Donate Now</span></a></div>
+                                    <div class="link-btn"><a href="cause-details.html?${element.campain_slug}" class="theme-btn btn-style-one donate-box-btn" onclick="getID(${element.id})"><span>Donate Now</span></a></div>
                                     <div class="share-icon post-share-icon d-none">
                                         <div class="share-btn"><i class="flaticon-share"></i></div>
                                         <ul>
@@ -56,7 +56,7 @@ fetch("http://127.0.0.1:8000/campain/all_capain/")
 fetch("http://127.0.0.1:8000/events/all_events/")
 .then(res=>res.json())
 .then(data=>{
-    console.log(data);
+    // console.log(data);
     
     data.forEach(element => {
     const inputDate = element.event_data;
@@ -94,7 +94,7 @@ fetch("http://127.0.0.1:8000/events/all_events/")
 fetch("http://127.0.0.1:8000/blog/all_blog/")
 .then(res=>res.json())
 .then(data=>{
-    console.log(data);
+    // console.log(data);
     
     data.forEach(element => {
         const inputDate = element.created_date
@@ -131,3 +131,44 @@ fetch("http://127.0.0.1:8000/blog/all_blog/")
         parents.appendChild(div);
     });
 })
+
+function getID(id){
+    console.log(id)
+    document.getElementById("campain_id").value = id 
+}
+
+const donet=(event)=>{    
+    event.preventDefault();
+    // const param = new URLSearchParams(window.location.search).get("id");
+    // console.log(param);
+    const name = document.getElementById("donar_name").value;
+    const email = document.getElementById("donar_email").value;
+    const phone = document.getElementById("donar_phone").value;
+    const amount = document.getElementById("other-amount").value;
+    const campaign = document.getElementById("campain_id").value;
+    const user = localStorage.getItem("user_id");
+    
+
+    // const customer = localStorage.getItem("user_id");
+    // console.log(customer);
+    const info = {
+        name : name,
+        email : email,
+        phone : phone,
+        amount : amount,
+        user : user,
+        campaign : campaign,
+    };
+
+    console.log(info);
+    fetch("http://127.0.0.1:8000/campain/donetion/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(info),
+    })
+      .then((res) => res.json())
+      .then((data) => {        
+        console.log(data);
+        
+      });
+};

@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:8000/campain/all_capain/")
+fetch("https://heart-for-humanity.vercel.app/campain/all_capain/")
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -48,7 +48,7 @@ fetch("http://127.0.0.1:8000/campain/all_capain/")
 function singleCauses() {
     const param = new URLSearchParams(window.location.search).get("slug");
 
-    fetch(`http://127.0.0.1:8000/campain/all_capain/${param}/`)
+    fetch(`https://heart-for-humanity.vercel.app/campain/all_capain/${param}/`)
         .then((res) => res.json())
         .then((data) => {
             let raised_money_in_parcent = (data.raised_price * 100) / data.goal_price;
@@ -63,12 +63,22 @@ function singleCauses() {
             document.getElementById("dial").setAttribute("value", infloor);
             document.getElementById("cause-image").src = data.image;
             document.getElementById("cause-description").innerText = data.details;
-
+            // document.getElementById("donate_now_details").value = data.id;
+            document.getElementById("donate_now_details").setAttribute("data-selected-id", data.id);
+            
         });
 }
 
 
-fetch("http://127.0.0.1:8000/campain/category/")
+function donateForCampaign(id){
+    // console.log(id)
+    var campaignId = document.getElementById("donate_now_details").getAttribute("data-selected-id");
+    console.log(campaignId);
+    document.getElementById("campain_id").value = campaignId
+
+}
+
+fetch("https://heart-for-humanity.vercel.app/campain/category/")
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -90,7 +100,7 @@ fetch("http://127.0.0.1:8000/campain/category/")
 
 
 
-fetch("http://127.0.0.1:8000/events/all_events/")
+fetch("https://heart-for-humanity.vercel.app/events/all_events/")
     .then(res => res.json())
     .then(data => {
         console.log(data);

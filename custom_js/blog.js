@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:8000/blog/all_blog/")
+fetch("https://heart-for-humanity.vercel.app/blog/all_blog/")
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -43,7 +43,7 @@ fetch("http://127.0.0.1:8000/blog/all_blog/")
 
 function singleBlog() {
     const param = new URLSearchParams(window.location.search).get("id");
-    fetch(`http://127.0.0.1:8000/blog/all_blog/${param}/`)
+    fetch(`https://heart-for-humanity.vercel.app/blog/all_blog/${param}/`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data.post_title);
@@ -65,7 +65,7 @@ function singleBlog() {
         });
 }
 
-fetch("http://127.0.0.1:8000/blog/blog_category/")
+fetch("https://heart-for-humanity.vercel.app/blog/blog_category/")
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -86,7 +86,7 @@ fetch("http://127.0.0.1:8000/blog/blog_category/")
     })
 
     
-fetch("http://127.0.0.1:8000/events/all_events/")
+fetch("https://heart-for-humanity.vercel.app/events/all_events/")
 .then(res => res.json())
 .then(data => {
     console.log(data);
@@ -109,7 +109,7 @@ fetch("http://127.0.0.1:8000/events/all_events/")
 
 function PostComment() {
     const param = new URLSearchParams(window.location.search).get("id");
-    fetch(`http://127.0.0.1:8000/blog/blog_comments/?post=${param}`)
+    fetch(`https://heart-for-humanity.vercel.app/blog/blog_comments/?post=${param}`)
         .then((res) => res.json())
         .then(data => {
             console.log(data);
@@ -148,7 +148,7 @@ const takeComment=(event)=>{
     };
     console.log(info);
     
-    fetch(`http://127.0.0.1:8000/blog/blog_comments/`,{
+    fetch(`https://heart-for-humanity.vercel.app/blog/blog_comments/`,{
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(info),

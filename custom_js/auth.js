@@ -11,6 +11,7 @@ const clearForm = () => {
     document.getElementById("confirm_password").value = "";
     
 };
+
 const handleRegistration = (event) => {
     event.preventDefault();
     const username = getValue("user_name");
@@ -34,7 +35,7 @@ const handleRegistration = (event) => {
     if (password === confirm_password) {
         if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)) {
             document.getElementById("registration_button").innerHTML = "Loding....";
-            fetch("http://127.0.0.1:8000/account/register/", {
+            fetch("https://heart-for-humanity.vercel.app/account/register/", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(info),
@@ -68,7 +69,8 @@ const handleLogin = (event) => {
         password,
     };
     console.log(value);
-    fetch("http://127.0.0.1:8000/account/login/", {
+    document.getElementById("login-button").innerHTML = "Loding....";
+    fetch("https://heart-for-humanity.vercel.app/account/login/", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         // body: JSON.stringify({ username:'username', password:'password' }),
@@ -87,3 +89,4 @@ const handleLogin = (event) => {
             }
         });
 }
+

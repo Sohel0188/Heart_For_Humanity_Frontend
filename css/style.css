@@ -386,69 +386,24 @@ li {
 /* Btn Style Three */
 
 .btn-style-three {
-	position: relative;
-	line-height: 24px;
+	
+
 	background: var(--dark-color);
 	color: #fff;
-	font-size: 18px;
+	border: 1px solid;
+	font-size: 15px;
 	border-radius: 6px;
-	padding: 15px 20px;
-	text-transform: capitalize;
 	overflow: hidden;
-	-webkit-box-shadow: 0px 20px 20px 0px rgba(48, 44, 81, 0.2);
-	        box-shadow: 0px 20px 20px 0px rgba(48, 44, 81, 0.2);
-	width: 100%;
-}
-
-.btn-style-three:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background-color: var(--theme-color);
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-	-webkit-transform: scaleX(0);
-	-ms-transform: scaleX(0);
-	    transform: scaleX(0);
-	-webkit-transform-origin: left top;
-	-ms-transform-origin: left top;
-	    transform-origin: left top;
-}
-
-.btn-style-three span {
-	position: relative;
-	z-index: 10;
-}
-
-.btn-style-three i {
-	position: relative;
-	margin-right: 10px;
-	z-index: 1;
-	font-size: 14px;
-}
-
-.btn-style-three:hover::before {
-	-webkit-transform: scaleY(1);
-	-ms-transform: scaleX(1);
-	    transform: scaleX(1);
-}
-
-.btn-style-three:hover::after {
-	-webkit-transition-delay: 0.2s;
-	-o-transition-delay: 0.2s;
-	   transition-delay: 0.2s;
-	-webkit-transform: scaleY(1);
-	-ms-transform: scaleY(1);
-	    transform: scaleY(1);
+	padding: 2px 20px;
+	margin-right: 5px;
+	margin-left: 5px;
+	
 }
 
 .btn-style-three:hover {
-	color: #ffffff;
+	color: #fff;
+	border: 1px solid #ED6221;
+	background-color: #ED6221;
 }
 
 /* Btn Style Four */

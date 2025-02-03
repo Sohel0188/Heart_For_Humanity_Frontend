@@ -1,3 +1,14 @@
+<!-- <script>
+    const user = localStorage.getItem("user_id");
+    if(user){
+        document.getElementById('login-register').className = "d-none";
+        document.getElementById('login-register-after-login').className = "d-flex";
+    }else{
+        document.getElementById('login-register').className = "d-flex";
+        document.getElementById('login-register-after-login').className = "d-none";
+    }
+
+</script> -->
 
 <!-- Preloader -->
 <div class="loader-wrap">
@@ -50,7 +61,7 @@
             <div class="wrapper-box">
                 <div class="logo-column">
                     <div class="logo-box">
-                        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div>
+                        <div class="logo"><a href="https://heart-for-humanity-frontend.vercel.app/"><img src="images/logo.png" alt="" title=""></a></div>
                     </div>
                 </div>
                 <div class="right-column">
@@ -94,12 +105,23 @@
                             </div>
                         </div>
                        
-                        <div class="navbar-btn-wrap">
+                        <div class="navbar-btn-wrap d-none">
                             <button class="anim-menu-btn">
                               <i class="flaticon-menu"></i>
                             </button>
                         </div>
-                        <div class="link-btn">
+
+                        <div class="login-register" id="login-register">
+                            <a href="login.html"> <span class="theme-btn btn-style-three">Login</span> </a>
+                            <a href="register.html"> <span class="theme-btn btn-style-three">Register</span> </a> 
+                        </div>
+
+                        <div class="login-register-after-login" id="profile-after-login">
+                                <a href=""> <span class="theme-btn btn-style-three"  onclick="handlelogOut()">Logout</span> </a>
+                                <a href="register.html"> <span class="theme-btn btn-style-three">User Name</span> </a> 
+                           </div>
+
+                        <div class="link-btn d-none">
                             <a href="#" class="theme-btn btn-style-one donate-box-btn"><span>Donate Now</span></a>
                         </div>
                     </div>
@@ -115,7 +137,7 @@
             <div class="wrapper-box">
                 <div class="logo-column">
                     <div class="logo-box">
-                        <div class="logo"><a href="index-2.html"><img src="images/logo.png" alt="" title=""></a></div>
+                        <div class="logo"><a href="https://heart-for-humanity-frontend.vercel.app/"><img src="images/logo.png" alt="" title=""></a></div>
                     </div>
                 </div>
                 <div class="menu-column">
@@ -288,6 +310,7 @@
                                 </div>
                             </div>
                         </div>  
+                        <p id="success-message"></p>
 
                     </div>
                 </div>
@@ -300,3 +323,5 @@
 
 <!-- <div class="link-box"><a href="#" class="theme-btn btn-style-one donate-box-btn"><span>Donate Now</span></a></div> -->
 <script src="custom_js/app.js"></script>
+
+<script src="custom_js/auth.js"></script>

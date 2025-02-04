@@ -90,3 +90,25 @@ const handleLogin = (event) => {
         });
 }
 
+
+function user_profile() {
+   
+    const user = localStorage.getItem("user_id");
+    fetch(`http://127.0.0.1:8000/account/list/${user}/`)
+        .then((res) => res.json())
+        .then((data) => {
+
+            console.log(data.title);
+            document.getElementById("profile-image").src = data.profile_image;
+            document.getElementById("user-name").innerText = data.username;
+            document.getElementById("where").innerText = data.location;
+            document.getElementById("when").innerText = data.event_data;
+            document.getElementById("event_start_time").innerText = data.event_start_time;
+            document.getElementById("event_end_time").innerText = data.event_end_time;
+            document.getElementById("description").innerText = data.event_description;
+            
+            document.getElementById("price").innerText = data.ticket_price;
+
+        });
+}
+user_profile();

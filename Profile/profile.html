@@ -22,7 +22,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        <a href="http://127.0.0.1:5500/" class="nav-link">Home</a>
       </li>
      
     </ul>
@@ -132,12 +132,12 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
+                  <img class="profile-user-img img-fluid img-circle" id="profile-image"
                        src="dist/img/user4-128x128.jpg"
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center" id="user-name">Nina Mcintire</h3>
 
                 <p class="text-muted text-center">Software Engineer</p>
 
@@ -257,6 +257,8 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+
+<script src="../custom_js/auth.js"></script>
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

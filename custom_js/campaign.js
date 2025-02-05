@@ -121,5 +121,41 @@ fetch("https://heart-for-humanity.vercel.app/events/all_events/")
         });
     })
 
+
+
+function donationHistory(){
+    const user = localStorage.getItem('user_id')
+    
+    fetch(`http://127.0.0.1:8000/campain/donetion/?user=${user}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        data.forEach(element => {
+            const parents = document.getElementById('event-in-cause-page');
+            const div = document.createElement("div")
+            div.classList.add('sidebar-widget', 'event-widget');
+            div.innerHTML = `
+            <div class="event-item">
+                <div class="image"><img class="event-short-image" src="${element.event_image}" alt=""></div>
+                <div class="content">
+                    <div class="date">${element.event_data} <span>${element.event_start_time}</span></div>
+                    <h5><a href="event-details.html?id=${element.id}">${element.title}</a></h5>
+                </div>
+            </div>         
+        `
+            parents.appendChild(div);
+        });
+    })
+
+}
+
+
+
+
+
+
+
+
+
 singleCauses();
 

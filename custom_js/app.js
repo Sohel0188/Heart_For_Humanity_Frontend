@@ -1,58 +1,126 @@
-fetch("https://heart-for-humanity.vercel.app/campain/all_capain/")
-.then(res=>res.json())
-.then(data=>{
-    // console.log(data);
+// fetch("https://heart-for-humanity.vercel.app/campain/all_capain/")
+// .then(res=>res.json())
+// .then(data=>{
+//     // console.log(data);
     
-    data.forEach(element => {
-        let raised_money_in_parcent = (element.raised_price*100)/element.goal_price;
-        let infloor = Math.floor(raised_money_in_parcent)
-        // console.log(raised_money_in_parcent);
-        // console.log(infloor);
-        const parents = document.getElementById('cause-carousel');
-        const div = document.createElement("div")
-        div.classList.add('cause-block-one');
-        div.innerHTML=`
+//     data.forEach(element => {
+//         let raised_money_in_parcent = (element.raised_price*100)/element.goal_price;
+//         let infloor = Math.floor(raised_money_in_parcent)
+//         // console.log(raised_money_in_parcent);
+//         // console.log(infloor);
+//         const parents = document.getElementById('cause-carousel');
+//         const div = document.createElement("div")
+//         div.classList.add('cause-block-one');
+//         div.innerHTML=`
                         
-                        <div class="inner-box">
-                            <div class="image"><a href="cause-details.html?slug=${element.campain_slug}"><img src="${element.image}" alt=""></a></div>
-                            <div class="lower-content">
-                                <h4><a href="cause-details.html?slug=${element.campain_slug}">${element.campain_title}</a></h4>
-                                <div class="category"><a href="#">${element.category_name}</a></div>
-                                <div class="text short-details">${element.short_details}</div>
-                                <div class="info-box">
-                                    <a href="#"><span>Raised:</span>৳ ${element.raised_price}</a>
-                                    <a href="#"><span>Goal:</span>৳ ${element.goal_price}</a>
-                                </div>
-                                <!--Progress Levels-->
-                                <div class="progress-levels">
+//                         <div class="inner-box">
+//                             <div class="image"><a href="cause-details.html?slug=${element.campain_slug}"><img src="${element.image}" alt=""></a></div>
+//                             <div class="lower-content">
+//                                 <h4><a href="cause-details.html?slug=${element.campain_slug}">${element.campain_title}</a></h4>
+//                                 <div class="category"><a href="#">${element.category_name}</a></div>
+//                                 <div class="text short-details">${element.short_details}</div>
+//                                 <div class="info-box">
+//                                     <a href="#"><span>Raised:</span>৳ ${element.raised_price}</a>
+//                                     <a href="#"><span>Goal:</span>৳ ${element.goal_price}</a>
+//                                 </div>
+//                                 <!--Progress Levels-->
+//                                 <div class="progress-levels">
                                             
-                                    <!--Skill Box-->
-                                    <div class="progress-box wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1500ms">
-                                        <div class="inner">
-                                            <div class="bar">
-                                                <div class="bar-innner"><div class="bar-fill" data-percent="${infloor}"><div class="percent"></div></div></div>
+//                                     <!--Skill Box-->
+//                                     <div class="progress-box wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1500ms">
+//                                         <div class="inner">
+//                                             <div class="bar">
+//                                                 <div class="bar-innner"><div class="bar-fill" data-percent="${infloor}"><div class="percent"></div></div></div>
+//                                             </div>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="bottom-content">
+//                                     <div class="link-btn"><a href="cause-details.html?${element.campain_slug}" class="theme-btn btn-style-one donate-box-btn" onclick="getID(${element.id})"><span>Donate Now</span></a></div>
+//                                     <div class="share-icon post-share-icon d-none">
+//                                         <div class="share-btn"><i class="flaticon-share"></i></div>
+//                                         <ul>
+//                                             <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+//                                             <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+//                                         </ul>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+                    
+//         `
+//         parents.appendChild(div);
+//     });
+// })
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("https://heart-for-humanity.vercel.app/campain/all_capain/")
+        .then(res => res.json())
+        .then(data => {
+            const parents = document.getElementById('cause-carousel');
+
+            // Clear previous items safely
+            parents.innerHTML = "";
+
+            data.forEach(element => {
+                let raised_money_in_percent = (element.raised_price * 100) / element.goal_price;
+                let infloor = Math.floor(raised_money_in_percent);
+
+                const div = document.createElement("div");
+                div.classList.add('cause-block-one', 'item'); // 'item' class is required for Owl Carousel
+                div.innerHTML = `
+                    <div class="inner-box">
+                        <div class="image"><a href="cause-details.html?slug=${element.campain_slug}"><img src="${element.image}" alt=""></a></div>
+                        <div class="lower-content">
+                            <h4><a href="cause-details.html?slug=${element.campain_slug}">${element.campain_title}</a></h4>
+                            <div class="category"><a href="#">${element.category_name}</a></div>
+                            <div class="text short-details">${element.short_details}</div>
+                            <div class="info-box">
+                                <a href="#"><span>Raised:</span>৳ ${element.raised_price}</a>
+                                <a href="#"><span>Goal:</span>৳ ${element.goal_price}</a>
+                            </div>
+                            <div class="progress-levels">
+                                <div class="progress-box">
+                                    <div class="inner">
+                                        <div class="bar">
+                                            <div class="bar-inner">
+                                                <div class="bar-fill" style="width: ${infloor}%;"><div class="percent">${infloor}%</div></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="bottom-content">
-                                    <div class="link-btn"><a href="cause-details.html?${element.campain_slug}" class="theme-btn btn-style-one donate-box-btn" onclick="getID(${element.id})"><span>Donate Now</span></a></div>
-                                    <div class="share-icon post-share-icon d-none">
-                                        <div class="share-btn"><i class="flaticon-share"></i></div>
-                                        <ul>
-                                            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                        </ul>
-                                    </div>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="link-btn">
+                                    <a href="cause-details.html?slug=${element.campain_slug}" class="theme-btn btn-style-one donate-box-btn">
+                                        <span>Donate Now</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    
-        `
-        parents.appendChild(div);
-    });
-})
+                    </div>`;
 
+                parents.appendChild(div);
+            });
+
+            // Wait for DOM update before initializing Owl Carousel
+            setTimeout(() => {
+                $(".cause-carousel").owlCarousel({
+                    loop: true,
+                    margin: 0,
+                    nav: true,
+                    dots: false,
+                    autoplay: true,
+                    responsive: {
+                        0: { items: 1 },
+                        600: { items: 2 },
+                        1000: { items: 3 }
+                    }
+                });
+            }, 300); // Short delay to ensure elements are added before initializing
+
+        })
+        .catch(error => console.error("Error loading data:", error));
+});
 
 fetch("https://heart-for-humanity.vercel.app/events/all_events/")
 .then(res=>res.json())

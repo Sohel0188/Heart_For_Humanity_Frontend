@@ -94,7 +94,7 @@ const handleLogin = (event) => {
 function user_profile() {
    
     const user = localStorage.getItem("user_id");
-    fetch(`http://127.0.0.1:8000/account/list/${user}/`)
+    fetch(`https://heart-for-humanity.vercel.app/account/list/${user}/`)
         .then((res) => res.json())
         .then((data) => {
 

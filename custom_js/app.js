@@ -279,10 +279,8 @@ const donet = (event) => {
         const successMessage = document.getElementById("success-message");
         successMessage.innerText = "Donation Successful! Thank you!";
         successMessage.classList.add("show-message"); // Add class for visibility
-
         // Add class to donate popup
         document.querySelector(".donate-popup").classList.add("active");
-
         // Clear input fields
         document.getElementById("donar_name").value = "";
         document.getElementById("donar_email").value = "";
@@ -292,8 +290,12 @@ const donet = (event) => {
         // Hide message after 3 seconds
         setTimeout(() => {
             successMessage.classList.remove("show-message");
-            document.querySelector(".donate-popup").classList.remove("active");
-        }, 3000);
+            successMessage.innerText="";
+            document.querySelector(".donate-popup").classList.remove("popup-visible");
+            window.location.reload();
+        }, 2000);
+
+
     })
     .catch((error) => {
         console.error("Error:", error);
@@ -302,7 +304,7 @@ const donet = (event) => {
 };
 
 
-// fetch("http://127.0.0.1:8000/account/list/")
+// fetch("https://heart-for-humanity.vercel.app/account/list/")
 // .then(res=>res.json())
 // .then(data=>{
 //     data.forEach(element => {
@@ -331,11 +333,11 @@ const donet = (event) => {
 //         parents.appendChild(div);
 //     });
 // })
-fetch("http://127.0.0.1:8000/account/list/")
+fetch("https://heart-for-humanity.vercel.app/account/list/")
 .then(res => res.json())
 .then(data => {
     const parents = document.getElementById('donar-list');
-    parents.innerHTML = ""; // ✅ Clear existing content
+    parents.innerHTML = "";
 
     data.forEach(element => {
         parents.innerHTML += `

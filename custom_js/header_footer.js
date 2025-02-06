@@ -3,7 +3,7 @@ const handlelogOut = () => {
   const token = localStorage.getItem("token");
   console.log(token)
 
-  fetch("http://127.0.0.1:8000/account/logout/", {
+  fetch("https://heart-for-humanity.vercel.app/account/logout/", {
       method: "POST",
       headers: {
           Authorization: `Token ${token}`,
@@ -16,7 +16,7 @@ const handlelogOut = () => {
           localStorage.removeItem("token");
           localStorage.removeItem("user");
           localStorage.removeItem("user_id");
-          window.location.href = "http://127.0.0.1:5500/"
+          window.location.href = "https://heart-for-humanity-frontend.vercel.app/"
 
       });
 };

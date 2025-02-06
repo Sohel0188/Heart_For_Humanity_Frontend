@@ -126,7 +126,7 @@ fetch("https://heart-for-humanity.vercel.app/events/all_events/")
 function donationHistory(){
     const user = localStorage.getItem('user_id')
     
-    fetch(`http://127.0.0.1:8000/campain/donetion/?user=${user}`)
+    fetch(`https://heart-for-humanity.vercel.app/campain/donetion/?user=${user}`)
     .then(res => res.json())
     .then(data => {
         console.log(data);

@@ -111,4 +111,29 @@ function user_profile() {
 
         });
 }
+
 user_profile();
+
+function donationHistory(){
+    const user_id = localStorage.getItem("user_id");
+    console.log(user_id)
+    let id=1;
+    fetch(`http://127.0.0.1:8000/campain/donetion/?user=${user_id}`)
+    .then(res=>res.json())
+    .then(data=>{
+        data.forEach(element => {
+        const parents = document.getElementById('donation-history');
+        const tr = document.createElement("tr")
+        tr.innerHTML=`
+                      <td>${id++}</td>
+                      <td>${element.campaign_title}</td>
+                      
+                      <td> <span>${element.amount}</span><span> Taka</span></td>
+                `
+            parents.appendChild(tr);
+        })
+    });
+    
+} 
+
+donationHistory()

@@ -274,7 +274,8 @@ const donet = (event) => {
     .then((res) => res.json())
     .then((data) => {        
         console.log(data);
-
+        const donation_id = data.id;
+        console.log(donation_id);
         // Show success message
         const successMessage = document.getElementById("success-message");
         successMessage.innerText = "Donation Successful! Thank you!";
@@ -292,7 +293,8 @@ const donet = (event) => {
             successMessage.classList.remove("show-message");
             successMessage.innerText="";
             document.querySelector(".donate-popup").classList.remove("popup-visible");
-            window.location.reload();
+            // window.location.reload();
+            window.location.href = `https://heart-for-humanity.vercel.app/campain/payment/`;
         }, 2000);
 
 

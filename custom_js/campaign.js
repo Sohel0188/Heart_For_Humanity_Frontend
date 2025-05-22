@@ -150,12 +150,5 @@ function donationHistory(){
 }
 
 
-
-
-
-
-
-
-
 singleCauses();
 

@@ -1889,7 +1889,7 @@
 	text-transform: capitalize;
 }
 
-.checkout-area .form form .field-input input[type="text"] {
+input {
 	border: 1px solid #f0eef9;
 	color: #848484;
 	display: block;

@@ -60,35 +60,72 @@ const handleRegistration = (event) => {
     console.log(info);
 };
 
-const handleLogin = (event) => {
+// const handleLogin = (event) => {
+//     event.preventDefault();
+//     const username = getValue("user_name");
+//     const password = getValue("password");
+//     const value = {
+//         username,
+//         password,
+//     };
+//     console.log(value);
+//     document.getElementById("login-button").innerHTML = "Loding....";
+//     fetch("https://heart-for-humanity.vercel.app/account/login/", {
+//         method: 'POST',
+//         headers: {"Content-Type": "application/json"},
+//         // body: JSON.stringify({ username:'username', password:'password' }),
+//         body: JSON.stringify(value),
+//     })
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log(data);
+//             if (data.token && data.user_id) {
+//                 localStorage.setItem("token", data.token);
+//                 localStorage.setItem("user_id", data.user_id);
+//                 window.location.href = data.redirect_url;
+//             }
+//             else if (data.error) {
+//                 document.getElementById('error').innerText = data.error;
+//             }
+//         });
+// }
+const handleLogin = async (event) => {
     event.preventDefault();
     const username = getValue("user_name");
     const password = getValue("password");
-    const value = {
-        username,
-        password,
-    };
+    const loginButton = document.getElementById("login-button");
+
+    // Set loading state
+    loginButton.innerHTML = "Loading...";
+
+    const value = { username, password };
     console.log(value);
-    document.getElementById("login-button").innerHTML = "Loding....";
-    fetch("https://heart-for-humanity.vercel.app/account/login/", {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ username:'username', password:'password' }),
-        body: JSON.stringify(value),
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.token && data.user_id) {
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("user_id", data.user_id);
-                window.location.href = data.redirect_url;
-            }
-            else if (data.error) {
-                document.getElementById('error').innerText = data.error;
-            }
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/account/login/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(value),
         });
-}
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data.token && data.user_id) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user_id", data.user_id);
+            window.location.href = data.redirect_url;
+        } else {
+            document.getElementById("error").innerText = data.error || "Login failed!";
+        }
+    } catch (error) {
+        console.error("Network Error:", error);
+        document.getElementById("error").innerText = "Something went wrong. Please try again.";
+    } finally {
+        // Reset button text
+        loginButton.innerHTML = "Login";
+    }
+};
 
 
 function user_profile() {

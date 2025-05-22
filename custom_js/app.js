@@ -294,7 +294,7 @@ const donet = (event) => {
             successMessage.innerText="";
             document.querySelector(".donate-popup").classList.remove("popup-visible");
             // window.location.reload();
-            window.location.href = `https://heart-for-humanity.vercel.app/campain/payment/`;
+            window.location.href = `https://http://127.0.0.1:8000/campain/payment/`;
         }, 2000);
 
 

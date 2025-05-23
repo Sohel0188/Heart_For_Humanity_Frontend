@@ -45,7 +45,7 @@
                 <div class="content-box">
                     <h1>Donet Now</h1>
                     <ul class="bread-crumb">
-                        <li><a class="home" href="index-2.html"><span class="fa fa-home"></span></a></li>
+                        <li><a class="home" href="#"><span class="fa fa-home"></span></a></li>
                         <li>Donation</li>
                     </ul>
                 </div>
@@ -61,44 +61,45 @@
                             <div class="shop-title-box">
                                 <h3>Billing Address</h3>
                             </div>
-                            <form method="post" action="http://steelthemes.com/demo/html/Goodsoul_html/checkout.html">
+                            <form method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="field-label">Name*</div>
                                         <div class="field-input">
-                                            <input type="text" name="Name" placeholder="">
+                                            <input type="text" id="donar_name" name="donar_name"
+                                                placeholder="Enter Your Name">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="field-label">Phone Number*</div>
                                         <div class="field-input">
-                                            <input type="text" name="fname" placeholder="">
+                                            <input type="text" id="donar_phone" name="donar_phone"
+                                                placeholder="Enter Your Phone Number">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="field-label">Email Address*</div>
                                         <div class="field-input">
-                                            <input type="email" name="email" placeholder="">
+                                            <input type="email" id="donar_email" name="donar_email"
+                                                placeholder="Enter Your Email Address">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="field-label">Amount *</div>
                                         <div class="field-input">
-                                            <input type="number" name="amount" placeholder="">
+                                            <input type="number" id="other-amount" name="other-amount"
+                                                placeholder="Write Donation Amount">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                       
                                         <div class="field-input">
-                                            <input style="background-color: #ED6221; color:white;" type="submit" value="Submit" placeholder="">
+                                            <input style="background-color: #ED6221; color:white;" type="button"
+                                                onclick="donet(event)" value="Submit">
                                         </div>
                                     </div>
-                                    
-                                  
-                                    
-                                   
                                 </div>
                             </form>
+
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 d-flex">
@@ -111,99 +112,10 @@
         <!--End Checkout area-->
 
         <!-- Main Footer -->
-      <div id="footer"></div>
+        <div id="footer"></div>
 
         <!--Scroll to top-->
         <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon flaticon-arrow"></span></div>
-
-        <div id="donate-popup" class="donate-popup">
-
-            <div class="popup-overlay"></div>
-
-            <div class="donate-form-area">
-                <div class="donate-form-wrapper">
-                    <div class="close-donate theme-btn"><span class="flaticon-close"></span></div>
-                    <div class="sec-title text-center">
-                        <h1>Donate us to achive our goal</h1>
-                        <div class="text">Beguiled and demoralized by the charms of pleasure of the moment, so by
-                            desire, <br>that they cannot foresee.</div>
-                    </div>
-
-                    <form action="#" class="donate-form default-form">
-                        <ul class="chicklet-list clearfix">
-                            <li>
-                                <input type="radio" id="donate-amount-1" name="donate-amount" />
-                                <label for="donate-amount-1" data-amount="10">$10</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="donate-amount-2" name="donate-amount" checked="checked" />
-                                <label for="donate-amount-2" data-amount="20">$20</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="donate-amount-3" name="donate-amount" />
-                                <label for="donate-amount-3" data-amount="50">$50</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="donate-amount-4" name="donate-amount" />
-                                <label for="donate-amount-4" data-amount="100">$100</label>
-                            </li>
-                            <li class="other-amount">
-                                <div class="input-container" data-message="Every dollar you donate helps end hunger.">
-                                    <input type="text" id="other-amount" placeholder="Other Amount" />
-                                </div>
-                            </li>
-                        </ul>
-
-                        <h3>Donor Information</h3>
-
-                        <div class="contact-form">
-                            <div class="row clearfix">
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="text" name="fname" placeholder="Full Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="text" name="fname" placeholder="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="text" name="fname" placeholder="Contact">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group">
-                                        <select class="filters-selec form-controlt selectmenu" name="form_subject">
-                                            <option value="*">Payment Via</option>
-                                            <option value=".category-1">Cash</option>
-                                            <option value=".category-2">Card</option>
-                                            <option value=".category-2">Bank Transfer</option>
-                                            <option value=".category-2">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group d-flex align-items-center justify-content-between">
-                                        <button class="theme-btn btn-style-one" type="submit"><span>Donate
-                                                Now</span></button>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">
-                                                <span>I would like to donate automatically repeat each month</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
 
     </div>
     <!--End pagewrapper-->
@@ -211,6 +123,7 @@
 
 
     <!-- JS -->
+    <script src="custom_js/app.js"></script>
     <script src="custom_js/events.js"></script>
     <script src="custom_js/header_footer.js"></script>
     <script src="js/jquery.js"></script>

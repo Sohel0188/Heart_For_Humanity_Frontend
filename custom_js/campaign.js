@@ -51,6 +51,16 @@ function singleCauses() {
     fetch(`https://heart-for-humanity.vercel.app/campain/all_capain/${param}/`)
         .then((res) => res.json())
         .then((data) => {
+            const parent = document.getElementById("donate-button")
+            console.log(parent);
+            const div = document.createElement("div");
+            console.log(data.id);
+            localStorage.setItem("campaign_id", data.id);
+            div.innerHTML = `
+                <a href="donation.html?id=${data.campain_slug}" class="theme-btn btn-style-one donate-box-btn"><span>Donate Now</span></a>
+            `
+            parent.appendChild(div);
+
             let raised_money_in_parcent = (data.raised_price * 100) / data.goal_price;
             let infloor = Math.floor(raised_money_in_parcent)
             console.log(raised_money_in_parcent);

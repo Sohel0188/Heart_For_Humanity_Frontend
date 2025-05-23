@@ -205,68 +205,32 @@ function getID(id){
     document.getElementById("campain_id").value = id
 }
 
-// function getIDinOnclick(id){
-//     document.getElementById("donate_now_details").setAttribute("data-selected-id", id);
-// }
-
-// const donet=(event)=>{    
-//     event.preventDefault();
-//     // const param = new URLSearchParams(window.location.search).get("id");
-//     // console.log(param);
-//     const name = document.getElementById("donar_name").value;
-//     const email = document.getElementById("donar_email").value;
-//     const phone = document.getElementById("donar_phone").value;
-//     const amount = document.getElementById("other-amount").value;
-//     const campaign = document.getElementById("campain_id").value;
-//     const user = localStorage.getItem("user_id");
-    
-
-//     // const customer = localStorage.getItem("user_id");
-//     // console.log(customer);
-//     const info = {
-//         name : name,
-//         email : email,
-//         phone : phone,
-//         amount : amount,
-//         user : user,
-//         campaign : campaign,
-//     };
-
-//     console.log(info);
-//     fetch("https://heart-for-humanity.vercel.app/campain/donetion/", {
-//       method: "POST",
-//       headers: { "content-type": "application/json" },
-//       body: JSON.stringify(info),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {        
-//         console.log(data);
-        
-//       });
-// };
 const donet = (event) => {    
     event.preventDefault();
-
+    const campaign = localStorage.getItem("campaign_id");
+    // const campaign = new URLSearchParams(window.location.search).get("Id");
     // Get input values
     const name = document.getElementById("donar_name").value;
     const email = document.getElementById("donar_email").value;
     const phone = document.getElementById("donar_phone").value;
     const amount = document.getElementById("other-amount").value;
-    const campaign = document.getElementById("campain_id").value;
+    // const campaign = document.getElementById("campain_id").value;
     const user = localStorage.getItem("user_id");
-
+    
+    console.log(campaign);
+    const userValue = user ? user : 0;
     const info = {
         name: name,
         email: email,
         phone: phone,
         amount: amount,
-        user: user,
+        user: userValue,
         campaign: campaign,
     };
 
     console.log(info);
 
-    fetch("https://heart-for-humanity.vercel.app/campain/donetion/", {
+    fetch("https://heart-for-humanity.vercel.app/campain/donetion/",{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info),
@@ -277,24 +241,21 @@ const donet = (event) => {
         const donation_id = data.id;
         console.log(donation_id);
         // Show success message
-        const successMessage = document.getElementById("success-message");
-        successMessage.innerText = "Donation Successful! Thank you!";
-        successMessage.classList.add("show-message"); // Add class for visibility
+        //const successMessage = document.getElementById("success-message");
+        //successMessage.innerText = "Donation Successful! Thank you!";
+        console.log("Success");
+        //successMessage.classList.add("show-message"); // Add class for visibility
         // Add class to donate popup
-        document.querySelector(".donate-popup").classList.add("active");
+        // document.querySelector(".donate-popup").classList.add("active");
         // Clear input fields
         document.getElementById("donar_name").value = "";
         document.getElementById("donar_email").value = "";
         document.getElementById("donar_phone").value = "";
         document.getElementById("other-amount").value = "";
 
-        // Hide message after 3 seconds
         setTimeout(() => {
-            successMessage.classList.remove("show-message");
-            successMessage.innerText="";
-            document.querySelector(".donate-popup").classList.remove("popup-visible");
-            // window.location.reload();
-            window.location.href = `https://http://127.0.0.1:8000/campain/payment/`;
+       
+           window.location.href = `https://heart-for-humanity.vercel.app/campain/payment/?donation_id=${donation_id}`;
         }, 2000);
 
 
@@ -305,36 +266,6 @@ const donet = (event) => {
     });
 };
 
-
-// fetch("https://heart-for-humanity.vercel.app/account/list/")
-// .then(res=>res.json())
-// .then(data=>{
-//     data.forEach(element => {
-        
-//         const parents = document.getElementById('donar-list');
-//         const div = document.createElement("div")
-//         div.classList.add('col-md-4', 'donor-block');
-//         div.innerHTML=`
-//             <div class="inner-box wow fadeInUp" data-wow-delay="200ms">
-//                 <div class="top-content">
-//                     <div class="image">
-//                         <img src="${element.profile_image}" alt="">
-//                         <div class="overlay">
-//                             <div class="icon"><a href="#"><span class="fa fa-twitter"></span></a></div>
-//                         </div>
-//                     </div>
-//                         <h4></h4>
-//                         <div class="location">${element.username}</div>
-//                         </div>
-//                         <div class="bottom-content">
-//                         <div class="text">Donation</div>
-//                     <div class="price">৳ ${element.total_donet_amount} <span></span></div>
-//                 </div>
-//             </div>     
-//         `
-//         parents.appendChild(div);
-//     });
-// })
 fetch("https://heart-for-humanity.vercel.app/account/list/")
 .then(res => res.json())
 .then(data => {

@@ -1,208 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Heart For Humanity</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="https://heart-for-humanity-frontend.vercel.app/" class="nav-link">Home</a>
-      </li>
-     
-    </ul>
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="https://heart-for-humanity-frontend.vercel.app/" class="nav-link">Home</a>
+        </li>
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item ">
-        
-        <a href=""> <span class="theme-btn btn-style-three"  onclick="handlelogOut()">Logout</span> </a>
+      </ul>
 
-       
-      </li>
-      
-      
-    </ul>
-  </nav>
-  <!-- /.navbar -->
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Heart For Humanity</span>
-    </a>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item ">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      
+          <a href=""> <span class="theme-btn btn-style-three" onclick="handlelogOut()">Logout</span> </a>
 
 
+        </li>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link">
+        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-light">Heart For Humanity</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+
+
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
-         
-          <li class="nav-item">
-            <a href="profile.html" class="nav-link">
-             
-              <p>
-                Profile
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="total_donation.html" class="nav-link">
-              
-              <p>
-                Donetion History
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="all_causes.html" class="nav-link">
-              
-              <p>
-                All Causes
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="add_causes.html" class="nav-link">
-              <p>
-                Add Causes
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="all_events.html" class="nav-link">
-              <p>
-                All Events
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="add_events.html" class="nav-link">
-              <p>
-                Add Events
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="all_blog.html" class="nav-link">
-              
-              <p>
-                All Blog
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="add_blog.html" class="nav-link">
-              
-              <p>
-                Add Blog
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Profile</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
+            <li class="nav-item">
+              <a href="profile.html" class="nav-link">
 
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" id="profile-image"
-                       src="dist/img/user4-128x128.jpg"
-                       alt="User profile picture">
-                </div>
+                <p>
+                  Profile
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="total_donation.html" class="nav-link">
 
-                <h3 class="profile-username text-center" id="user-name"></h3>
+                <p>
+                  Donetion History
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="all_couses.html" class="nav-link">
 
-                <p class="text-muted text-center" id="user-phone"></p>
+                <p>
+                  All Causes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="add_couses.html" class="nav-link">
+                <p>
+                  Add Causes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="all_events.html" class="nav-link">
+                <p>
+                  All Events
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="add_events.html" class="nav-link">
+                <p>
+                  Add Events
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="all_blog.html" class="nav-link">
 
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Total Donate Amount</b> <a class="float-right">৳ <span id="donate-amount"></span></a>
-                  </li>
-                  
-                </ul>
+                <p>
+                  All Blog
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="add_blog.html" class="nav-link">
 
-              </div>
-              <!-- /.card-body -->
+                <p>
+                  Add Blog
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="add_couses_category.html" class="nav-link">
+                <p>
+                  Add Couses Category
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="all_couses_category.html" class="nav-link">
+                <p>
+                  All Couses Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="add_blog_category.html" class="nav-link">
+                <p>
+                  Add Blog Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="all_blog_category.html" class="nav-link">
+                <p>
+                  All Blog Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="event_booking.html" class="nav-link">
+                <p>
+                  Booking Event
+                </p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Profile</h1>
             </div>
-            
-            <!-- /.card -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">User Profile</li>
+              </ol>
+            </div>
           </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                 
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="timeline">
-                    <!-- The timeline -->
-                   
-                  </div>
-                  <!-- /.tab-pane -->
+        </div><!-- /.container-fluid -->
+      </section>
 
-                  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" id="profile-image"
+                      src="dist/img/user4-128x128.jpg" alt="User profile picture">
+                  </div>
+
+                  <h3 class="profile-username text-center" id="user-name"></h3>
+
+                  <p class="text-muted text-center" id="user-phone"></p>
+
+                  <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                      <b>Total Donate Amount</b> <a class="float-right">৳ <span id="donate-amount"></span></a>
+                    </li>
+
+                  </ul>
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                      <!-- The timeline -->
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+
                     <form class="form-horizontal">
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -234,7 +273,7 @@
                           <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
                         </div>
                       </div>
-                      
+
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Submit</button>
@@ -252,7 +291,7 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -264,19 +303,20 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
 
-<!-- jQuery -->
+  <!-- jQuery -->
 
-<script src="../custom_js/auth.js"></script>
-<script src="../custom_js/header_footer.js"></script>
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+  <script src="../custom_js/auth.js"></script>
+  <script src="../custom_js/header_footer.js"></script>
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
 </body>
+
 </html>

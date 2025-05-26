@@ -210,10 +210,10 @@
 
                                         <form class="form-horizontal">
                                             <div class="form-group row">
-                                                <label for="inputName" class="col-sm-3 col-form-label">
+                                                <label for="" class="col-sm-3 col-form-label">
                                                     Category Name</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="inputName"
+                                                    <input type="text" class="form-control" id="couses_category_name"
                                                         placeholder="">
                                                 </div>
                                             </div>
@@ -221,14 +221,15 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-sm-3 col-form-label">Image</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" id="" placeholder="Image">
+                                                    <input type="file" class="form-control" id="couses_category_image" placeholder="Image">
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group row">
                                                 <div class="offset-sm-3 col-sm-9">
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                                    <button class="btn btn-info" onclick="addCousesCategory(event)">Submit</button>
+
                                                 </div>
                                             </div>
                                         </form>
@@ -261,6 +262,7 @@
     <!-- jQuery -->
 
     <script src="../custom_js/auth.js"></script>
+    <script src="../custom_js/admin.js"></script>
     <script src="../custom_js/header_footer.js"></script>
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

@@ -153,11 +153,51 @@ fetch("https://heart-for-humanity.vercel.app/campain/donetion/")
                         <td>${element.email}</td>
                         <td>${element.phone}</td>
                         <td>${element.amount}</td>
-                        <td>${element.campaign_title}</td>
-                      
-
-                        
+                        <td>${element.campaign_title}</td>              
         `
             parents.appendChild(div);
         });
     });
+
+const addCousesCategory = (event) => {
+    event.preventDefault();
+
+    const category = document.getElementById("couses_category_name").value.trim();
+    const image = document.getElementById("couses_category_image").files[0];
+
+    const slug = category
+        .toLowerCase()
+        .replace(/[^a-z0-9-_]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+    const formData = new FormData();
+    formData.append("title", category);
+    formData.append("slug", slug);
+    formData.append("image", image);
+
+    fetch('https://heart-for-humanity.vercel.app/campain/category/', {
+        method: "POST",
+        body: formData,
+    })
+    .then(async (res) => {
+        const contentType = res.headers.get("content-type");
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`Server Error ${res.status}: ${errorText}`);
+        }
+        if (contentType && contentType.includes("application/json")) {
+            return res.json();
+        } else {
+            throw new Error("Unexpected response format (not JSON)");
+        }
+    })
+    .then((data) => {
+        console.log("Success:", data);
+        alert("Category uploaded successfully!");
+        // Optionally redirect or reset form
+    })
+    .catch((error) => {
+        console.error("Error uploading category:", error.message);
+    });
+};
+
